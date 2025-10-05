@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LensHire - Rental Kamera Kolaka</title>
+  <style>
+    /* === RESET & FONT === */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f9f9f9;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 5%;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #007b5e;
+    }
+
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #007b5e;
+    }
+
+    /* === HERO === */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 5% 10%;
+      flex-wrap: wrap;
+      background: linear-gradient(to right, #fdfdfd, #f2f2f2);
+    }
+
+    .hero-text {
+      flex: 1 1 400px;
+      animation: fadeIn 1s ease;
+    }
+
+    .hero-text h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+      color: #111;
+    }
+
+    .hero-text p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+      color: #555;
+    }
+
+    .hero-text a {
+      background-color: #007b5e;
+      color: white;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .hero-text a:hover {
+      background-color: #005b44;
+    }
+
+    .hero img {
+      width: 400px;
+      border-radius: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-top: 20px;
+      animation: slideIn 1s ease;
+    }
+
+    /* === SECTIONS === */
+    .section {
+      padding: 5% 10%;
+      text-align: center;
+    }
+
+    .section h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #222;
+      animation: fadeUp 1s ease;
+    }
+
+    /* === PRODUCTS === */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .product {
+      background-color: #fff;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 1rem;
+      transition: transform 0.3s ease;
+      animation: fadeUp 1s ease;
+    }
+
+    .product:hover {
+      transform: translateY(-5px);
+    }
+
+    .product img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .product h3 {
+      margin: 0.8rem 0 0.4rem;
+      font-size: 1.2rem;
+    }
+
+    .product p {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .product span {
+      display: block;
+      font-weight: 600;
+      color: #007b5e;
+      margin-bottom: 1rem;
+    }
+
+    .product a {
+      display: inline-block;
+      background-color: #007b5e;
+      color: white;
+      padding: 0.6rem 1rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .product a:hover {
+      background-color: #005b44;
+    }
+
+    /* === FORM PEMESANAN === */
+    .form-section {
+      background-color: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      padding: 3% 5%;
+      margin: 5% auto;
+      max-width: 800px;
+      animation: fadeUp 1s ease;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    label {
+      text-align: left;
+      font-weight: 500;
+      color: #333;
+    }
+
+    input, select, textarea {
+      padding: 0.8rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    button {
+      background-color: #007b5e;
+      color: white;
+      padding: 0.8rem;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    button:hover {
+      background-color: #005b44;
+    }
+
+    /* === CONTACT === */
+    .contact {
+      background-color: #007b5e;
+      color: white;
+      padding: 4% 10%;
+      border-radius: 16px;
+      margin: 5% auto;
+      max-width: 1000px;
+      animation: fadeIn 1s ease;
+    }
+
+    .contact h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+    }
+
+    .contact p {
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    .contact a {
+      background-color: #fff;
+      color: #007b5e;
+      padding: 0.8rem 1.5rem;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s;
+    }
+
+    .contact a:hover {
+      background-color: #f1f1f1;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #fff;
+      color: #555;
+      font-size: 0.9rem;
+      margin-top: 2rem;
+    }
+
+    /* === ANIMATIONS === */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero img {
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav>
+      <div class="logo">LensHire</div>
+      <ul>
+        <li><a href="#home">Beranda</a></li>
+        <li><a href="#produk">Produk</a></li>
+        <li><a href="#form">Pemesanan</a></li>
+        <li><a href="#kontak">Kontak</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>Sewa Kamera Profesional di Kolaka</h1>
+      <p>Temukan kamera terbaik untuk setiap kebutuhanmu — mulai dari dokumentasi acara, vlog, hingga proyek profesional.</p>
+      <a href="#form">Mulai Sewa Sekarang</a>
+    </div>
+    <img src="https://images.unsplash.com/photo-1519183071298-a2962be90b8e" alt="Kamera Rental">
+  </section>
+
+  <section class="section" id="produk">
+    <h2>Pilihan Kamera</h2>
+    <div class="products">
+      <div class="product">
+        <img src="https://id.canon/media/image/2020/08/14/4416baf9586149c982c6d61713353065_19_EOS%2B90D_BK_FrontSlantDown_18-55ISSTM.png" alt="Canon EOS 80D">
+        <h3>Canon EOS 80D</h3>
+        <p>Kamera DSLR dengan hasil jernih dan stabil, cocok untuk foto dan video.</p>
+        <span>Rp 150.000 / hari</span>
+        <a href="#form">Sewa Sekarang</a>
+      </div>
+      <div class="product">
+        <img src="https://megakamera.com/wp-content/uploads/2021/12/Sony-Camera-A7IV-Kit2870mm-3.jpg" alt="Sony A6400">
+        <h3>Sony A6400</h3>
+        <p>Kamera mirrorless ringan dan tajam, favorit untuk travel dan vlog.</p>
+        <span>Rp 170.000 / hari</span>
+        <a href="#form">Sewa Sekarang</a>
+      </div>
+      <div class="product">
+        <img src="https://sumberbahagia.co.id/wp-content/uploads/2025/03/gopro-13-s.jpg" alt="GoPro Hero 10">
+        <h3>GoPro Hero 10</h3>
+        <p>Action cam dengan stabilisasi luar biasa, cocok untuk aktivitas outdoor.</p>
+        <span>Rp 120.000 / hari</span>
+        <a href="#form">Sewa Sekarang</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="form-section" id="form">
+    <h2>Formulir Pemesanan</h2>
+    <form id="orderForm">
+      <label for="nama">Nama Lengkap:</label>
+      <input type="text" id="nama" placeholder="Masukkan nama kamu" required>
+
+      <label for="kamera">Pilih Kamera:</label>
+      <select id="kamera" required>
+        <option value="">-- Pilih Kamera --</option>
+        <option value="Canon EOS 80D">Canon EOS 80D</option>
+        <option value="Sony A6400">Sony A6400</option>
+        <option value="GoPro Hero 10">GoPro Hero 10</option>
+      </select>
+
+      <label for="tanggal">Tanggal Sewa:</label>
+      <input type="date" id="tanggal" required>
+
+      <label for="durasi">Durasi (hari):</label>
+      <input type="number" id="durasi" min="1" required>
+
+      <label for="pesan">Catatan Tambahan:</label>
+      <textarea id="pesan" rows="3" placeholder="Tulis kebutuhan atau pertanyaanmu..."></textarea>
+
+      <button type="submit">Kirim via WhatsApp</button>
+    </form>
+  </section>
+
+  <section class="contact" id="kontak">
+    <h2>Hubungi Kami</h2>
+    <p>Butuh bantuan atau info lebih lanjut? Hubungi kami melalui WhatsApp di bawah ini.</p>
+    <a href="https://wa.me/628?text=Halo,%20saya%20tertarik%20dengan%20layanan%20LensHire" target="_blank">Chat via WhatsApp</a>
+  </section>
+
+  <footer>
+    <p>© 2025 LensHire | Rental Kamera Kolaka. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Kirim data form ke WhatsApp
+    document.getElementById("orderForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const nama = document.getElementById("nama").value;
+      const kamera = document.getElementById("kamera").value;
+      const tanggal = document.getElementById("tanggal").value;
+      const durasi = document.getElementById("durasi").value;
+      const pesan = document.getElementById("pesan").value;
+
+      const nomorWA = "6281234567890"; // Ganti dengan nomor WA kamu
+      const text = `Halo LensHire, saya *${nama}* ingin menyewa kamera *${kamera}* pada tanggal *${tanggal}* selama *${durasi} hari*. Catatan: ${pesan}`;
+      const url = `https://wa.me/${nomorWA}?text=${encodeURIComponent(text)}`;
+
+      window.open(url, "_blank");
+    });
+  </script>
+
+</body>
+</html>
